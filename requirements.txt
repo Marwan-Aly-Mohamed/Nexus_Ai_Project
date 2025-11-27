@@ -1,0 +1,16 @@
+yfinance
+darts
+pytorch-lightning
+scikit-learn
+torch
+transformers
+datasets
+accelerate
+GoogleNews
+feedparser
+dateparser
+pandas
+numpy
+matplotlib
+urllib3
+tqdm
