@@ -9,13 +9,13 @@ Nexus AI acts like a hedge-fund analyst, combining:
 Both “brains” operate independently and unify only at the final decision gate, ensuring the model never trades based on hallucinated sentiment or misleading price noise.
 
 # Bicameral Architecture
-Left Brain — Quant Model (DLinear)
+### Left Brain — Quant Model (DLinear)
 * Processes 60-day OHLCV tensors
 * Decomposes Trend & Seasonality
 * Multi-step forecasting (3-day vector)
 * Resistant to the “LSTM Persistence Trap”
 
-## Right Brain — NLP Model (FinBERT)
+### Right Brain — NLP Model (FinBERT)
 * Analyzes ticker-specific RSS headlines
 * Weighted loss to handle Neutral-heavy datasets
 * Time-decay scoring + relevance grading
