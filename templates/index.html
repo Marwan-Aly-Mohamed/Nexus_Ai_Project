@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXUS AI | TERMINAL</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <div class="app-container" id="main-blur">
+        
+        <header>
+            <div class="logo">NEXUS <span class="highlight">AI</span></div>
+            <div class="status-indicator">
+                <div class="status-dot"></div> SYSTEM ONLINE
+            </div>
+        </header>
+
+        <!-- SEARCH -->
+        <section class="search-section">
+            <div class="search-wrapper">
+                <input type="text" id="search-input" placeholder="SEARCH ASSET (e.g. NVDA)" autocomplete="off">
+                <button id="analyze-btn">ANALYZE</button>
+            </div>
+            <div id="suggestions" class="suggestions-box hidden"></div>
+        </section>
+
+        <!-- LOADER -->
+        <div id="loader" class="hidden" style="text-align: center; color: var(--gold-primary); margin-top: 50px;">
+            <p style="font-family: 'JetBrains Mono'; animation: pulse 1s infinite;">INITIALIZING NEURAL LINK...</p>
+        </div>
+
+        <!-- DASHBOARD GRID -->
+        <section id="results" class="results-grid hidden">
+            
+            <!-- 1. SIGNAL -->
+            <div class="card signal-card">
+                <h3>AI VERDICT</h3>
+                <div class="big-signal" id="final-signal">--</div>
+            </div>
+
+            <!-- 2. PRICE -->
+            <div class="card">
+                <h3>PRICE PROJECTION (T+3)</h3>
+                <div class="metric-row">
+                    <span class="metric-label">Current</span>
+                    <span class="metric-val" id="price-current">--</span>
+                </div>
+                <div class="metric-row">
+                    <span class="metric-label">Target</span>
+                    <span class="metric-val val-highlight" id="price-pred">--</span>
+                </div>
+                <div class="metric-row">
+                    <span class="metric-label">Trajectory</span>
+                    <span class="metric-val" id="price-change">--</span>
+                </div>
+            </div>
+
+            <!-- 3. SENTIMENT -->
+            <div class="card">
+                <h3>MARKET SENTIMENT</h3>
+                <div style="display: flex; flex-direction: column; justify-content: center; height: 100%;">
+                    <div class="sentiment-row">
+                        <span class="s-label">POS</span>
+                        <div class="bar-bg"><div class="bar-fill fill-pos" id="bar-pos" style="width:0%"></div></div>
+                        <span class="s-val" id="val-pos">0%</span>
+                    </div>
+                    <div class="sentiment-row">
+                        <span class="s-label">NEU</span>
+                        <div class="bar-bg"><div class="bar-fill fill-neu" id="bar-neu" style="width:0%"></div></div>
+                        <span class="s-val" id="val-neu">0%</span>
+                    </div>
+                    <div class="sentiment-row">
+                        <span class="s-label">NEG</span>
+                        <div class="bar-bg"><div class="bar-fill fill-neg" id="bar-neg" style="width:0%"></div></div>
+                        <span class="s-val" id="val-neg">0%</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. CHARTS (Full Width) -->
+            <div class="charts-section">
+                <div class="chart-card">
+                    <h3>PRICE FORECAST</h3>
+                    <canvas id="priceChart"></canvas>
+                </div>
+                <div class="chart-card">
+                    <h3>MOMENTUM VELOCITY</h3>
+                    <canvas id="trajChart"></canvas>
+                </div>
+            </div>
+
+        </section>
+
+    </div>
+
+    <!-- CHAT -->
+    <div class="chat-fab" id="chat-fab" onclick="toggleChat()">✦</div>
+    
+    <div class="chat-panel" id="chat-panel">
+        <div class="chat-resizer" id="chat-resizer"></div>
+        <div class="chat-header">
+            <div class="chat-title">NEXUS INTELLIGENCE</div>
+            <button class="chat-close" onclick="toggleChat()">✕</button>
+        </div>
+        <div class="chat-body" id="chat-messages">
+            <div class="msg msg-bot">Awaiting Neural Link...</div>
+        </div>
+        <div class="chat-input-area">
+            <input type="text" id="chat-input" placeholder="Ask Nexus...">
+            <button id="chat-send">➤</button>
+        </div>
+    </div>
+
+    <script src="/static/js/script.js"></script>
+</body>
+</html>
